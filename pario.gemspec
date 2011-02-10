@@ -14,8 +14,8 @@ Gem::Specification.new do |s|
   s.summary       = %q{A Gosu game framework}
   s.description   = %q{Pario is a Gosu game framework that helps to give you structure and a start for creating games}
   
-  s.required_rubygems_version = '~>1.3.7'
-  s.rubyforge                 = 'pario'
+  s.required_rubygems_version = '~> 1.3.7'
+  s.rubyforge_project         = 'pario'
   
   s.add_dependency('gosu',  '~> 0.7.26')
   
