@@ -24,8 +24,8 @@ Pario is a Gosu Game framework that helps to give you structure and a start for 
 	
    where my_class is the name of your class.
 
-   ADVANCED: You may also want to create many classes(files) and relate them. 
-   Pario will not create subfolders, rather, it will autogenerate the code inside and properly relate them.
+4. ADVANCED: You may also want to create many classes(files) and relate them. 
+   Pario will not create subfolders, rather, it will auto-generate the code inside and properly relate them.
    ** NOTE: This can be done manually, which means you'll need to create the files and add
    the appropriate 'require' statements. Pario simplifies this for you.
   
