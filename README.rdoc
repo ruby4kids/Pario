@@ -37,5 +37,5 @@ Pario is a Gosu Game framework that helps to give you structure and a start for 
 * {HacketyHack:} [link:http://hackety-hack.com]
 * {Learn to Program:} [link:http://pine.fm/LearnToProgram]
 
-These two resources will bring you up to speed on the Ruby language and also on
+These resources will bring you up to speed on the Ruby language and also on
 programming in general.
