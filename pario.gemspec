@@ -6,7 +6,7 @@ require 'pario/version'
 
 Gem::Specification.new do |s|
   s.name          = 'pario'
-  s.version       = Pario::Version::STRING
+  s.version       = Pario::VERSION
   s.platform      = Gem::Platform::RUBY
   s.authors       = ['Bill Davenport', 'Anthony Burns']
   s.email         = ['bill@infoether.com', 'anthony@infoether.com']
