@@ -109,11 +109,18 @@ class Pario
       # create_licesnse
     end
     
+    # This will take ""
     def game_name
-      # For testing
-      # puts "*"*80
-      # raise "{:command => #{@command.inspect}, :arguments => #{@arguments[0].inspect}}"
       @game_name ||= @arguments[0]
+    end
+    
+    def game_name_downcase
+      game_name.split(/(?=[A-Z])/).join('_').downcase
+    end
+    
+    def game_name_upcase
+      #TODO: need to handle camelcase
+      game_name.to_s.gsub(/\b\w/){$&.upcase}
     end
     
     def create_base_files
@@ -124,7 +131,7 @@ class Pario
     
     def build_game_class
       Dir.chdir("game")
-      game_file = File.open(@game_name + ".rb", "w+") 
+      game_file = File.open(game_name_downcase + ".rb", "w+") 
       game_file.puts game_class
     end
     
@@ -142,7 +149,7 @@ require 'gosu'
 Dir.glob(File.join("game", "*.rb")).each {|file|  require file }
 
 
-game = #{game_upcase}.new(800, 600)
+game = #{game_name_upcase}.new(800, 600)
 game.show
 EOF
 main_template.result(binding)
@@ -150,7 +157,7 @@ main_template.result(binding)
 
     def game_class
 game_template = ERB.new <<-EOF
-class #{game_upcase} < Gosu::Window
+class #{game_name_upcase} < Gosu::Window
   def initialize(window_width, window_height)
     super(window_width,window_height,0)
   end
@@ -159,14 +166,9 @@ EOF
 game_template.result(binding)
     end
     
-    def game_upcase
-      #TODO: need to handle camelcase
-      @game_name.to_s.gsub(/\b\w/){$&.upcase}
-    end
-    
     def create_directories
-      Dir.mkdir(game_name) unless File.directory?(game_name)
-      Dir.chdir(game_name)
+      Dir.mkdir(game_name_downcase) unless File.directory?(game_name_downcase)
+      Dir.chdir(game_name_downcase)
       Directories.each do |sub_folder|
         Dir.mkdir sub_folder unless File.directory?(sub_folder)
       end
