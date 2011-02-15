@@ -16,23 +16,10 @@ Pario is a Gosu Game framework that helps to give you structure and a start for 
    
    where myapp is the game name.
 
-2. Change the directory to myapp and start the game:
+2. Change the directory to my_game and start the game:
 
 	pario play
 
-3. To create more classes for your game (which will appear in the game folder):
-
-	pario create my_class
-	
-   where my_class is the name of your class.
-
-4. ADVANCED: You may also want to create many classes(files) and relate them. 
-   Pario will not create subfolders, rather, it will auto-generate the code inside and properly relate them.
-   ** NOTE: This can be done manually, which means you'll need to create the files and add
-   the appropriate 'require' statements. Pario simplifies this for you.
-  
-	pario create my_class menu background
-  
 == Learning Ruby
 
 * {Ruby4kids:} [link:http://www.ruby4kids.com]
