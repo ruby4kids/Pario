@@ -7,6 +7,7 @@ Pario is a Gosu Game framework that helps to give you structure and a start for 
 	sudo gem install pario 
 	
 	* Windows users: gem install pario
+	* ALSO: Gosu will automatically be installed with you install pario
 
 == Getting Started
 
