@@ -1,6 +1,6 @@
 == Welcome to Pario
 
-Pario is a Gosu Game framework that helps to give you structure and a start for creating games. Inspired by {Rails} [https://github.com/rails/rails].
+Pario is a Gosu Game framework that helps to give you structure and a start for creating games. Inspired by Rails [https://github.com/rails/rails].
 
 == Installation
 
@@ -22,9 +22,9 @@ Pario is a Gosu Game framework that helps to give you structure and a start for 
 
 == Learning Ruby
 
-* {Ruby4kids:} [link:http://www.ruby4kids.com]
-* {HacketyHack:} [link:http://hackety-hack.com]
-* {Learn to Program:} [link:http://pine.fm/LearnToProgram]
+* Ruby4kids: [link:http://www.ruby4kids.com]
+* HacketyHack: [link:http://hackety-hack.com]
+* Learn to Program: [link:http://pine.fm/LearnToProgram]
 
 These resources will bring you up to speed on the Ruby language and also on
 programming in general.
