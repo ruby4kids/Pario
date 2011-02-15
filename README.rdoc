@@ -1,6 +1,6 @@
 == Welcome to Pario
 
-Pario is a Gosu Game framework that helps to give you structure and a start for creating games. 
+Pario is a Gosu Game framework that helps to give you structure and a start for creating games. Inspired by {Rails} [https://github.com/rails/rails].
 
 == Installation
 
