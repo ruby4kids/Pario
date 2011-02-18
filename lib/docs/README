@@ -1,0 +1,53 @@
+== Welcome to Pario
+
+Pario is a Gosu Game framework that helps to give you structure and a start for creating games. 
+
+== Getting Started
+
+1. At the command prompt, create a new Pario game
+  <tt>gosu create my_game</tt> (where <tt>my_game</tt> is the game name)
+
+2. Change the directory to <tt>myapp</tt> and start the game
+  <tt>gosu play</tt>
+
+3. NOT YET IMPLEMENTED: To create more classes for your game (which will appear in the game folder)
+ <tt>gosu add my_class</tt> (where <tt>my_class</tt> is the name of your class)
+ 
+  Also, just as <tt>create</tt>, subsequent words will become subclasses of the first named class. 
+  However, the game folder will not create subfolders but relate the classes automatically.
+  <tt>gosu create my_class menu background</tt>
+
+  |-- my_class.rb
+  |   |-- menu.rb
+  |   `-- background.rb
+ 
+== Learning Ruby
+
+* Ruby4kids: http://www.ruby4kids.com
+* HacketyHack: http://hackety-hack.com/
+* Learn to Program: http://pine.fm/LearnToProgram/
+
+These two resources will bring you up to speed on the Ruby language and also on
+programming in general.
+
+== Description of Contents
+
+The default directory structure of a generated Pario application:
+
+MyApp
+  |-- config
+  |-- game
+  |-- lib
+  |-- media
+
+config
+  A basic configuration file is created for you. Configuration is a place where game setup information goes (like window size or fonts). Feel free to add to it. 
+  
+game
+  Holds all of the code that's deals with your particular game.
+  
+lib
+  Contains any library or module you want to use to extend your game. Any files in here will be auto-loaded when your game starts.
+
+media
+  A place to keep all of your images and sound files. 

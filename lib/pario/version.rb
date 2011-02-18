@@ -1,3 +1,3 @@
-module Pario
-  VERSION = "0.3.1"
+module Pario #:nodoc:
+  VERSION = "0.3.2"
 end

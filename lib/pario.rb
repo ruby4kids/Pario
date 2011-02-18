@@ -1,17 +1,16 @@
 require 'optparse' 
 require 'rdoc/usage'
 require 'ostruct'
-require 'date'
 require 'erb'
 
 class Pario
-  VERSION = '0.0.1'
+  Version = '0.3.2'
   Directories = %w{game lib media config}
   
   attr_reader :options, :command, :game_name, :arguments
 
   def initialize(arguments, stdin)
-    @command = command(arguments.delete_at(0))
+    @command = arguments[0]
     @arguments = arguments
     @stdin = stdin
     
@@ -23,21 +22,21 @@ class Pario
 
   # Parse options, check arguments, then process the command
   def run
-    process_command
-    
-    # if parsed_options? && arguments_valid? 
-    #   process_arguments            
-    #   process_command
-    # else
-    #   output_usage
-    # end
+
+    if parsed_options? && arguments_valid? 
+      #TODO
+    elsif valid_command?
+      @command = arguments.delete_at(0)
+      process_command 
+    else
+      output_usage
+    end
       
   end
   
   protected
   
     def parsed_options?
-      
       # Specify options
       opts = OptionParser.new 
       opts.on('-v', '--version')    { output_version ; exit 0 }
@@ -85,16 +84,11 @@ class Pario
     end
     
     def output_version
-      puts "#{File.basename(__FILE__)} version #{VERSION}"
+      puts "#{File.basename(__FILE__)} version #{Version}"
     end
     
-    def command(arg)
-      commands = %w{game create play}
-      if commands.include? arg
-        arg
-      else
-        raise "That command is not supported"
-      end
+    def valid_command?
+      %w{create add play}.include? @command
     end
     
     def process_command
@@ -102,7 +96,8 @@ class Pario
       #process_standard_input # [Optional]
     end
     
-    def game
+    # Create a game
+    def create
       create_directories
       create_base_files
       # create_readme
@@ -115,7 +110,7 @@ class Pario
     end
     
     def game_name_downcase
-      game_name.split(/(?=[A-Z])/).join('_').downcase
+      game_name.split(/(?=[A-Z]+_)/).join('_').downcase
     end
     
     def game_name_upcase
@@ -174,7 +169,7 @@ game_template.result(binding)
       end
     end
   
-    def create
+    def add
       puts "Feature to come soon, I'm working on it!"
     end
     

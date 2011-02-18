@@ -13,9 +13,9 @@ Pario is a Gosu Game framework that helps to give you structure and a start for 
 
 1. At the command prompt, create a new Pario application:
 
-	pario game my_game
+	pario create my_game
    
-   where myapp is the game name.
+   where my_game is the game name.
 
 2. Change the directory to my_game and start the game:
 
