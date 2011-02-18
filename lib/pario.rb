@@ -4,7 +4,7 @@ require 'ostruct'
 require 'erb'
 
 class Pario
-  Version = '0.3.2'
+  Version = '0.3.4'
   Directories = %w{game lib media config}
   
   attr_reader :options, :command, :game_name, :arguments
@@ -22,10 +22,10 @@ class Pario
 
   # Parse options, check arguments, then process the command
   def run
-
-    if parsed_options? && arguments_valid? 
+    if (parsed_options? && arguments_valid?) && !valid_pario_command? 
       #TODO
-    elsif valid_command?
+    elsif valid_pario_command?
+      
       @command = arguments.delete_at(0)
       process_command 
     else
@@ -87,7 +87,7 @@ class Pario
       puts "#{File.basename(__FILE__)} version #{Version}"
     end
     
-    def valid_command?
+    def valid_pario_command?
       %w{create add play}.include? @command
     end
     
@@ -100,8 +100,11 @@ class Pario
     def create
       create_directories
       create_base_files
-      # create_readme
-      # create_licesnse
+      copy_files
+    end
+    
+    def copy_files
+      # TODO copy over README, LICENSE and pario_background
     end
     
     # This will take ""
@@ -155,6 +158,16 @@ game_template = ERB.new <<-EOF
 class #{game_name_upcase} < Gosu::Window
   def initialize(window_width, window_height)
     super(window_width,window_height,0)
+  end
+  
+  def update
+    # Code to your object around goes here
+    # TODO: Need more details
+  end
+  
+  def draw
+    # Code to draw what you see goes here
+    # TODO: Need more details
   end
 end
 EOF
