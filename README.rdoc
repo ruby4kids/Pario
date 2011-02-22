@@ -9,6 +9,10 @@ Pario is a Gosu Game framework that helps to give you structure and a start for 
 	* Windows users: gem install pario
 	* ALSO: Gosu will automatically be installed when you install pario
 
+   Other Requirements
+	* sudo gem update --system
+	* ruby patchlevel 330, you may experience issues. Working on instructions to upgrade ruby on a system.
+
 == Getting Started
 
 1. At the command prompt, create a new Pario application:

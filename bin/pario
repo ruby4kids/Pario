@@ -1,5 +1,5 @@
 #!/user/bin/evn ruby
 
-pario_path = File.expand_path('../lib', __FILE__)
+pario_path = File.expand_path('../../lib', __FILE__)
 $LOAD_PATH.unshift(pario_path) unless $LOAD_PATH.include?(pario_path)
 require 'pario'

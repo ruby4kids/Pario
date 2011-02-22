@@ -15,7 +15,7 @@ module Util
   end
   
   #########################
-  # There are more than the ones below
+  # There are more key hooks than the ones below, this is just a start
   # TODO: link here to a key map of all of the possiblities 
   # EXAMPLE: 
   # if key_pressed? :left
@@ -33,7 +33,8 @@ module Util
     button_down?(key_const)
   end
   
+  # positioning layers within a game
   # module ZOrder
-  #  Background, Stars, Player, UI = *0..3  
+  #  Background, UI = *0..3  
   # end
 end

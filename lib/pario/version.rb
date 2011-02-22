@@ -1,3 +1,9 @@
 module Pario #:nodoc:
-  VERSION = "0.3.4"
+  module Version
+      MAJOR = '0'
+      MINOR = '3'
+      MICRO = '6'
+  
+      STRING = [MAJOR, MINOR, MICRO].compact.join('.')
+  end
 end
