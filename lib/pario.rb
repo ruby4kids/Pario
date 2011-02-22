@@ -1,5 +1,5 @@
 require 'erb'
-require 'pario/inflect'
+require 'pario/inflector'
 
 module Pario
   autoload :Version, 'pario/version'

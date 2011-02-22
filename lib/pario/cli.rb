@@ -20,23 +20,14 @@ module Pario
         @command = arguments.delete_at(0)
         process_command 
       else
-        output_usage
+        puts "Command not recognized."
       end
     end
   
     protected
-  
-      # Setup the arguments
-      def process_arguments
-        #TODO
-      end
-    
-      def output_usage
-        RDoc::usage('usage') # gets usage from comments above
-      end
-    
+
       def output_version
-        puts "pario version #{Version.number}"
+        puts "pario version #{Version::STRING}"
       end
     
       def valid_pario_command?
@@ -66,12 +57,13 @@ module Pario
     
       def create_base_files
         build_main
-        build_extra_classes
+        build_extra_classes unless @arguments.empty?
         # build_game_config
         build_game_class
       end
     
       def build_game_class
+        raise ":game_name => #{game_name.camelize}"
         game_file = File.open("#{game_name.camelize}.rb", "w+") 
         game_file.puts game_class
       end
@@ -83,12 +75,12 @@ module Pario
       end
     
       def build_extra_classes
-       @current_directory =  Dir.getwd.chomp.split("/").last if @base_class
-       Dir.chdir("game") 
-       if @base_class
-         base_class_file = File.open("#{@base_class.camelize}.rb", "w+")
-         base_class_file.puts base_class_template(@base_class.downcase)
-       end
+        @current_directory =  Dir.getwd.chomp.split("/").last if @base_class
+        Dir.chdir("game") 
+        if @base_class
+          base_class_file = File.open("#{@base_class.camelize}.rb", "w+")
+          base_class_file.puts base_class_template(@base_class.downcase)
+        end
         @arguments.each do |new_class|
           class_file  = File.open("#{new_class.camelize}.rb", "w+")
           class_file.puts class_template(new_class)
@@ -161,7 +153,7 @@ game_template.result(binding)
   
       def add
         @base_class = @arguments.delete_at(0)
-        build_extra_classes
+        build_extra_classes unless @arguments.empty?
       end
     
       def play
