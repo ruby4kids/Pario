@@ -1,9 +1,11 @@
 require 'pario'
 require 'optparse' 
 require 'erb'
+require 'fileutils'
 
 module Pario
   class Cli
+    include FileUtils
   
     Directories = %w{game lib media config}
   
@@ -44,10 +46,14 @@ module Pario
         create_directories
         create_base_files
         copy_files
+        build_config_yaml
       end
     
       def copy_files
-        # TODO copy over README, LICENSE and pario_background
+        cp File.join(File.expand_path(File.dirname(__FILE__)), "..", "util.rb"), "../lib/util.rb"
+        cp File.join(File.expand_path(File.dirname(__FILE__)), "media", "pario_background.png"), "../media/pario_background.png"
+        cp File.join(File.expand_path(File.dirname(__FILE__)), "..", "docs", "README"), "../README"
+        cp File.join(File.expand_path(File.dirname(__FILE__)), "..", "docs", "LICENSE"), "../LICENSE"
       end
     
       # Set game name
@@ -81,6 +87,12 @@ module Pario
         main_file = File.open("main.rb", "w+") 
         main_file.puts main_class
       end
+      
+      def build_config_yaml
+        Dir.chdir('../config')
+        config_file = File.open("config.yml", "w+") 
+        config_file.puts config_yaml
+      end
     
       def build_extra_classes
         Dir.chdir("game") unless Dir.getwd.split("/").last == "game"
@@ -88,6 +100,14 @@ module Pario
           class_file  = File.open("#{new_class.gsub(/(.)([A-Z])/,'\1_\2').downcase}.rb", "w+")
           class_file.puts class_template(new_class)
         end
+      end
+      
+      def config_yaml
+template = ERB.new <<-EOF
+screen_width: 600
+screen_height: 800
+EOF
+template.result(binding)
       end
             
       def class_template(name)
@@ -104,11 +124,17 @@ template.result(binding)
 main_template = ERB.new <<-EOF
 require 'rubygems'
 require 'gosu'
+require 'yaml'
 
 Dir.glob(File.join("game", "*.rb")).each {|file|  require file }
+Dir.glob(File.join("lib", "*.rb")).each {|file|  require file }
 
+config = YAML::load(File.open("config/config.yml"))
 
-game = #{game_name_capitalize}.new(800, 600)
+#Add lib includes here
+include Util
+
+game = #{game_name_capitalize}.new(config["screen_height"], config["screen_width"])
 game.show
 EOF
 main_template.result(binding)
@@ -119,6 +145,7 @@ game_template = ERB.new <<-EOF
 class #{game_name_capitalize} < Gosu::Window
   def initialize(window_width, window_height)
     super(window_width,window_height,0)
+    @background_image = background_image "media/pario_background.png"
   end
 
   def update
@@ -128,7 +155,7 @@ class #{game_name_capitalize} < Gosu::Window
 
   def draw
     # Code to draw what you see goes here
-    # TODO: Need more details
+    @background_image.draw 0,0,0
   end
 end
 EOF

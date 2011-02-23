@@ -11,7 +11,7 @@ Pario is a Gosu Game framework that helps to give you structure and a start for 
 
    Other Requirements
 	* sudo gem update --system
-	* ruby patchlevel 330, you may experience issues. Working on instructions to upgrade ruby on a system.
+	* ruby patchlevel 330 or highter, you may experience issues. Working on instructions to upgrade ruby on a system.
 
 == Getting Started
 
