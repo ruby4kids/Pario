@@ -41,7 +41,7 @@ config
   A basic configuration file is created for you. Configuration is a place where game setup information goes (like window size or fonts). Feel free to add to it.  COMING SOON.
   
 game
-  Holds all of the code that's deals with your particular game.
+  Holds all of the code that deals with your particular game.
   
 lib
   Contains any library or module you want to use to extend your game. Any files in here will be auto-loaded when your game starts.
