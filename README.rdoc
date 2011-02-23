@@ -29,7 +29,7 @@ Pario is a Gosu Game framework that helps to give you structure and a start for 
 
 	pario add my_class
 	
-	* Pario will create more than one class of you have more: pario add star background player
+	* Pario will create more than one class if you have more: pario add star background player
 
 == Learning Ruby
 
