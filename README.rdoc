@@ -25,6 +25,10 @@ Pario is a Gosu Game framework that helps to give you structure and a start for 
 
 	pario play
 
+3. Add more classes to the game:
+
+	pario add my_class
+
 == Learning Ruby
 
 * Ruby4kids: [link:http://www.ruby4kids.com] - links to game examples and videos.
