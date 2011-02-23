@@ -31,7 +31,7 @@ module Pario
       end
     
       def valid_pario_command?
-        %w{create add play -v}.include? @command
+        %w{new add play -v}.include? @command
       end
     
       def process_command
@@ -40,7 +40,7 @@ module Pario
       end
     
       # Create a game
-      def create
+      def new
         create_directories
         create_base_files
         copy_files
@@ -136,7 +136,7 @@ game_template.result(binding)
       end
     
       def create_directories
-        folder_name = game_name.gsub(/(.)([A-Z])/,'\1_\2').downcase!
+        folder_name = game_name.gsub(/(.)([A-Z])/,'\1_\2').downcase
         Dir.mkdir(folder_name) unless File.directory?(folder_name)
         Dir.chdir(folder_name)
         Directories.each do |sub_folder|
