@@ -65,10 +65,6 @@ module Pario
         game_name.gsub(/(.)([A-Z])/,'\1_\2').downcase
       end
       
-      def game_name_capitalize
-        game_name.to_s.gsub(/\b\w/){$&.upcase}
-      end
-    
       def create_base_files
         build_main
         build_extra_classes unless @arguments.empty?
@@ -134,7 +130,7 @@ config = YAML::load(File.open("config/config.yml"))
 #Add lib includes here
 include Util
 
-game = #{game_name_capitalize}.new(config["screen_height"], config["screen_width"])
+game = #{game_name.capitalize}.new(config["screen_height"], config["screen_width"])
 game.show
 EOF
 main_template.result(binding)
@@ -142,7 +138,7 @@ main_template.result(binding)
 
       def game_class
 game_template = ERB.new <<-EOF
-class #{game_name_capitalize} < Gosu::Window
+class #{game_name.capitalize} < Gosu::Window
   def initialize(window_width, window_height)
     super(window_width,window_height,0)
     @background_image = background_image "media/pario_background.png"
