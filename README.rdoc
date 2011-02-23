@@ -17,7 +17,7 @@ Pario is a Gosu Game framework that helps to give you structure and a start for 
 
 1. At the command prompt, create a new Pario application:
 
-	pario create my_game
+	pario new my_game
    
    where my_game is the game name.
 
@@ -28,6 +28,8 @@ Pario is a Gosu Game framework that helps to give you structure and a start for 
 3. Add more classes to the game:
 
 	pario add my_class
+	
+	* Pario will create more than one class of you have more: pario add star background player
 
 == Learning Ruby
 
