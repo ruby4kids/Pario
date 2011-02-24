@@ -36,6 +36,7 @@ Pario is a Gosu Game framework that helps to give you structure and a start for 
 * Ruby4kids: [link:http://www.ruby4kids.com] - links to game examples and videos.
 * HacketyHack: [link:http://hackety-hack.com] - A program that teaches Ruby :-)
 * Learn to Program: [link:http://pine.fm/LearnToProgram] - Great online book for learning Ruby.
+* Gosu Library: [link:http://libgosu.org] - Gosu resource site.
 
 These resources will bring you up to speed on the Ruby language and also on
 programming in general.
