@@ -100,8 +100,8 @@ module Pario
       
       def config_yaml
 template = ERB.new <<-EOF
-screen_width: 600
-screen_height: 800
+:screen_width: 600
+:screen_height: 800
 EOF
 template.result(binding)
       end
@@ -122,15 +122,14 @@ require 'rubygems'
 require 'gosu'
 require 'yaml'
 
-Dir.glob(File.join("game", "*.rb")).each {|file|  require file }
-Dir.glob(File.join("lib", "*.rb")).each {|file|  require file }
+Dir['{game,lib}/*.rb'].each { |f| require f }
 
 config = YAML::load(File.open("config/config.yml"))
 
 #Add lib includes here
 include Util
 
-game = #{game_name.capitalize}.new(config["screen_height"], config["screen_width"])
+game = #{game_name.capitalize}.new(config[:screen_height], config[:screen_width])
 game.show
 EOF
 main_template.result(binding)
