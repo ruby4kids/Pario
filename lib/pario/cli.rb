@@ -58,11 +58,11 @@ module Pario
     
       # Set game name
       def game_name
-        @game_name ||= @arguments.delete_at(0)
+        @game_name ||= @arguments.delete_at(0).gsub(/-/, "_")
       end
       
       def game_name_camelcase
-        game_name.gsub(/(.)([A-Z])/,'\1_\2').downcase
+        game_name.gsub(/(.)([A-Z])/,'\1_\2').gsub(/-/, "_").downcase
       end
       
       def create_base_files
@@ -91,9 +91,9 @@ module Pario
       end
     
       def build_extra_classes
-        Dir.chdir("game") unless Dir.getwd.split("/").last == "game"
+        Dir.chdir("game")
         @arguments.each do |new_class|
-          class_file  = File.open("#{new_class.gsub(/(.)([A-Z])/,'\1_\2').downcase}.rb", "w+")
+          class_file  = File.open("#{game_name_camelcase}.rb", "w+")
           class_file.puts class_template(new_class)
         end
       end
@@ -118,11 +118,14 @@ template.result(binding)
     
       def main_class
 main_template = ERB.new <<-EOF
+$:.unshift(File.expand_path("../game", __FILE__))
+$:.unshift(File.expand_path("../lib", __FILE__))
+
 require 'rubygems'
 require 'gosu'
 require 'yaml'
 
-Dir['{game,lib}/*.rb'].each { |f| require f }
+Dir['{game,lib}/*.rb'].each { |f| require File.basename(f[0..-4]) }
 
 config = YAML::load(File.open("config/config.yml"))
 
@@ -158,7 +161,7 @@ game_template.result(binding)
       end
     
       def create_directories
-        folder_name = game_name.gsub(/(.)([A-Z])/,'\1_\2').downcase
+        folder_name = game_name.gsub(/(.)([A-Z])/,'\1_\2').gsub(/-/, "_").downcase
         Dir.mkdir(folder_name) unless File.directory?(folder_name)
         Dir.chdir(folder_name)
         Directories.each do |sub_folder|
