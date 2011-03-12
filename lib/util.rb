@@ -20,7 +20,7 @@ module Util
   # #########################
   def key_pressed?(key)
     key_const = Gosu.const_get(:"Kb#{key.to_s.gsub(/\b\w/){$&.upcase}}")
-    button_down?(key_const)
+    $game_window.button_down?(key_const)
   end
   
   # positioning layers within a game

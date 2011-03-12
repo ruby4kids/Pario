@@ -133,6 +133,7 @@ config = YAML::load(File.open("config/config.yml"))
 include Util
 
 game = #{game_name.capitalize}.new(config[:screen_height], config[:screen_width])
+$game_window = game
 game.show
 EOF
 main_template.result(binding)
