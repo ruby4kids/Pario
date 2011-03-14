@@ -133,7 +133,6 @@ config = YAML::load(File.open("config/config.yml"))
 include Util
 
 game = #{game_name.capitalize}.new(config[:screen_height], config[:screen_width])
-$game_window = game
 game.show
 EOF
 main_template.result(binding)
@@ -144,6 +143,9 @@ game_template = ERB.new <<-EOF
 class #{game_name.capitalize} < Gosu::Window
   def initialize(window_width, window_height)
     super(window_width,window_height,0)
+    
+    # set $game_window as a global variable
+    set_game_window(self)
     @background_image = background_image "media/pario_background.png"
   end
 

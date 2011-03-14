@@ -23,6 +23,12 @@ module Util
     $game_window.button_down?(key_const)
   end
   
+  def set_game_window(game)
+    # For now, use $game_window 
+    # This may change
+    $game_window = game
+  end
+  
   # positioning layers within a game
   # module ZOrder
   #  Background, UI = *0..3  
